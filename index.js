@@ -11,7 +11,8 @@ server.get('/holidays', (req, res) => {
 });
 
 server.get('/holidays/:monthId', (req, res) => {
-    const month = holidays.filter(holiday => holiday.date.split('/')[0] === req.params.monthId);
+    const id = req.params.monthId;
+    const month = holidays.filter(holiday => holiday.date.split('/')[0] === id);
     res.send(month);
 })
 
