@@ -10,6 +10,11 @@ server.get('/holidays', (req, res) => {
     res.send(holidays);
 });
 
+server.get('/holidays/:monthId', (req, res) => {
+    const month = holidays.filter(holiday => holiday.date.split('/')[0] === req.params.monthId);
+    res.send(month);
+})
+
 server.get('/is-today-holiday', (req, res) => {
     const hoje = new Date();
     const todayHoliday = holidays.find(holiday => holiday.date === hoje.toLocaleDateString());
